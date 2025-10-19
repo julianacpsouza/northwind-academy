@@ -4,5 +4,20 @@ sources:
     schema: raw_northwind
     tables:
       - name: category
+        columns:
+          - name: id
+            data_tests:
+              - not_null
+              - unique
       - name: products
+        columns:
+          - name: id
+            data_tests:
+              - not_null
+              - unique
       - name: suppliers
+        columns:
+          - name: id
+            data_tests:
+              - not_null
+              - unique
