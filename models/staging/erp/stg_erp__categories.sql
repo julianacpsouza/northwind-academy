@@ -12,5 +12,13 @@ renamed as (
 
 )
 
+, final as (
+    select
+        category_pk
+        , category_name
+        , category_description
+    from renamed
+)
+
 select * 
-from renamed
+from final

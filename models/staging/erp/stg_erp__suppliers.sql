@@ -5,7 +5,7 @@ with
     )
     , renamed as (
         select
-            cast(ID as varchar) as supplier_pk
+            cast(ID as int) as supplier_pk
             , cast(COMPANYNAME as varchar) as supplier_name
             --, cast(CONTACTNAME as varchar) as supplier_
             --, cast(CONTACTTITLE as varchar) as supplier_
@@ -19,6 +19,16 @@ with
             --, cast(HOMEPAGE as varchar) as supplier_
         from source
     )
- 
+
+    , final as (
+        select
+            supplier_pk
+            , supplier_name
+            , supplier_city
+            , supplier_region
+            , supplier_country
+        from renamed
+    )
+
  select *
- from renamed
+ from final
