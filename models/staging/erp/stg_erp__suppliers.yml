@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: stg_erp__suppliers
+    description: >
+      "Staging model for the raw 'suppliers' table from the ERP source system. 
+      It applies type casting, standardizes column names, and extracts core identification and location details."
+    
+    columns:
+      # Chave Primária
+      - name: supplier_pk
+        description: "The unique identifier (Primary Key) for the supplier."
+        tests:
+          - unique
+          - not_null
+          
+      # Atributos de Identificação
+      - name: supplier_name
+        description: "The official name of the supplier company."
+        
+      # Atributos Geográficos
+      - name: supplier_city
+        description: "The primary city where the supplier is located."
+        
+      - name: supplier_region
+        description: "The region or state where the supplier is located (may be null)."
+
+      - name: supplier_country
+        description: "The country where the supplier is located."

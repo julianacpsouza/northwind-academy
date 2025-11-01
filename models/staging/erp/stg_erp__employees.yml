@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: stg_erp__employees
+    description: >
+     "Staging model for the raw 'employees' table from the ERP source system. It applies type casting, 
+     standardizes column names, and derives the full employee name."
+    
+    columns:
+      # Chaves e Relacionamentos
+      - name: employee_pk
+        description: "The unique identifier (Primary Key) for the employee."
+        tests:
+          - unique
+          - not_null
+          
+      - name: manager_fk
+        description: >
+         "The Foreign Key linking the employee to their direct manager (self-referencing ID). 
+         Null for the top-level executive."
+        
+      # Informações de Nome
+      - name: first_name
+        description: "The employee's first name."
+        
+      - name: last_name
+        description: "The employee's last name."
+        
+      - name: full_name
+        description: "The concatenated first and last name of the employee."
+        
+      # Atributos do Funcionário
+      - name: empoloyee_title
+        description: "The official job title or position held by the employee."
+        
+      - name: empoloyee_birth_date
+        description: "The employee's date of birth."
+        
+      - name: empoloyee_hire_date
+        description: "The official date the employee was hired."
+        
+      # Atributos Geográficos
+      - name: empoloyee_city
+        description: "The employee's city of residence or work location."
+        
+      - name: empoloyee_region
+        description: "The employee's region/state of residence or work location (may be null)."
+
+      - name: empoloyee_country
+        description: "The employee's country of residence or work location."

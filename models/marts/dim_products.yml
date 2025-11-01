@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: "Product dimension table, consolidating details from product, supplier, and category entities. Used for sales and inventory analysis."
+    
+    columns:
+      # Product Keys & Core Attributes
+      - name: product_id
+        description: "The unique identifier (Primary Key) for the product."
+        tests:
+          - unique
+          - not_null
+          
+      - name: product_name
+        description: "The official name of the product."
+        
+      - name: quantity_per_unit
+        description: "The quantity of product in a standard unit (e.g., '10 boxes per case')."
+        
+      - name: unit_price
+        description: "The standard unit price of the product."
+        
+      - name: is_discontinued
+        description: "Flag indicating if the product has been discontinued (1=Yes, 0=No)."
+        tests:
+          - accepted_values:
+              values: [0, 1]
+              
+      # Inventory Metrics
+      - name: units_in_stock
+        description: "Current number of units available in stock."
+        
+      - name: units_on_order
+        description: "Number of units currently on order from the supplier."
+        
+      - name: reorder_level
+        description: "The threshold stock level that triggers a new order."
+        
+      # Category Attributes
+      - name: category_name
+        description: "The name of the category the product belongs to."
+        
+      # Supplier Attributes
+      - name: supplier_name
+        description: "The full name of the product's primary supplier."
+        
+      - name: supplier_city
+        description: "The city where the supplier is located."
+
+      - name: supplier_country
+        description: "The country where the supplier is located."
