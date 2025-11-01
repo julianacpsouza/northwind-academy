@@ -7,7 +7,7 @@ with
 
 , renamed as (
     select
-        cast(ID as int) as empoloyee_pk       
+        cast(ID as int) as employee_pk       
         , cast(LASTNAME as varchar) as last_name
         , cast(FIRSTNAME as varchar) as first_name
         , first_name || ' ' || last_name as full_name
@@ -32,7 +32,7 @@ with
 
 , final as (
     select
-        empoloyee_pk      
+        employee_pk      
         , manager_fk
         , full_name
         , empoloyee_title

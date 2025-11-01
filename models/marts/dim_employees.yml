@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: dim_employees # Nome do arquivo SQL: dim_employees.sql
+    description: >
+      Employee dimension table containing personnel details and managerial hierarchy. Grain is one row per unique employee.
+    
+    columns:
+      # Chaves Primárias
+      - name: employee_pk
+        description: "The primary key for the employee dimension, derived from the source employee ID."
+        tests:
+          - unique
+          - not_null
+          
+      # Atributos do Funcionário
+      - name: full_name
+        description: "The full name of the employee."
+        
+      - name: empoloyee_title
+        description: "The official job title or position held by the employee."
+      
+      - name: manager_name
+        description: >
+          "The full name of the employee's direct manager (self-join result). Will be NULL if the employee is 
+          the top-level executive."
+        
+      - name: empoloyee_birth_date
+        description: "The employee's date of birth."
+        
+      - name: empoloyee_hire_date
+        description: "The official date the employee was hired."
+        
+      # Atributos Geográficos
+      - name: empoloyee_city
+        description: "The employee's city of residence or work location."
+        
+      - name: empoloyee_region
+        description: "The employee's region/state of residence or work location."
+
+      - name: empoloyee_country
+        description: "The employee's country of residence or work location."
